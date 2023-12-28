@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="b45c795d-5336-48cd-9c1d-503cf0aa8288" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="assignmentapi3Flow" doc:id="3ff783f7-18f4-42c9-b36e-2c91e81d5b08" >
+		<http:listener doc:name="Listener" doc:id="14decbe5-3524-4fb0-a3c6-61c3217e8034" config-ref="HTTP_Listener_config" path="/assignment3"/>
+		<logger level="INFO" doc:name="Logger" doc:id="54805a39-ce4b-4ac2-9c45-62ca582f09ca" message='#["attributes flow starts"]'/>
+		<logger level="INFO" doc:name="Logger" doc:id="38c889cb-c84a-4695-94f8-7846a9a8966a" message="#[attributes.queryParams.value]"/>
+		<logger level="INFO" doc:name="Logger" doc:id="aa8a70cb-03bc-4e37-b8b7-d71702c2304a" message='#["attributes flow ends"]'/>
+	</flow>
+</mule>
